@@ -1,4 +1,3 @@
-# nutrition = {}
 fruit_and_their_calories = {
     "Apple": 130,
     "Avocado": 50,
@@ -22,6 +21,7 @@ fruit_and_their_calories = {
     "Watermelon": 80
 }
 
-# Iterate through the dictionary
-for fruit, calories in fruit_and_their_calories.items():
-    print(f"{fruit}: {calories} calories")
+request = input("Item: ").title()
+if request in fruit_and_their_calories:
+    calories = fruit_and_their_calories[request]
+    print(f"Calories: {calories}")
