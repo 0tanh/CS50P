@@ -1,0 +1,7 @@
+plate = input("Give your vanity hoe: ")
+if plate.isalnum():
+    if 2 <= len(plate) <= 6:
+        if plate[0].isalpha() and plate[1].isalpha():
+            print(True)      
+else:
+    print(False)
