@@ -4,7 +4,7 @@ def main():
 
 def get_pace(miles, minutes):
     if not minutes > 0:
-        raise Exception()
+        raise ValueError("Invalid Value for minutes (ValueError).")
     return minutes / miles
 
 main()
