@@ -5,11 +5,13 @@ import random
 figlet = Figlet()
 figlet_list =figlet.getFonts()
 
-if 0 < len(sys.argv()) < 2:
+if len(sys.argv) == 2:
     sys.exit("Invalid usage")
-
-if sys.argv[1] in figlet_list:
-
+elif len(sys.argv) == 1:
+    input("") 
+elif sys.argv[2] in figlet_list:
+    figlet.setFont(font=f)
+    input("")
 
 
 
