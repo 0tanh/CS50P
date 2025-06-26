@@ -1,0 +1,4 @@
+import emoji
+
+emojii_store = input("Input: ")
+print(f"Output: {emoji.emojize(emojii_store, language='alias')}")
