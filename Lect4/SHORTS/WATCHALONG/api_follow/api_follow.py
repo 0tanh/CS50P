@@ -2,8 +2,13 @@ import requests as r
 import sys
 
 def main():
+    print("Search the Art Insitite of Chicago with me hehe")
+    artist = input("Name your artist: ")
     try:
-        response = r.get("https://api.artic.edu/api/v1/artworks/search") ##tries calling da api
+        response = r.get(
+            "https://api.artic.edu/api/v1/artworks/search", ##tries calling da api
+            {"q": artist} ##queries for the artist variable
+            ) 
         response.raise_for_status() ##tries raising an http error pre-emptively
     except r.HTTPError: #if it gets the http error
         print("die api het gebreek :( (couln't complete request))") #prints an error as a string
