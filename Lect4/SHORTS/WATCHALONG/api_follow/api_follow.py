@@ -3,7 +3,7 @@ import sys
 
 def main():
     print("Search the Art Insitite of Chicago with me hehe")
-    artist = input("Name your artist: ")
+    artist = input("Name your artiste: ")
     try:
         response = r.get(
             "https://api.artic.edu/api/v1/artworks/search", ##tries calling da api
