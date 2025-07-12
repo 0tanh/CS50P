@@ -1,0 +1,17 @@
+from pyfiglet import Figlet
+import sys
+import random
+
+all_fonts=Figlet.getFonts()
+print(all_fonts, "\n")
+
+str = input("Input: ")
+
+font=sys.argv(2)
+
+print(f"Output: ")
+
+if sys.argv(1) is not "-f" or "--font":
+    sys.exit("Incorrect format for selecting font")
+elif sys.argv(2).str is not all_fonts:
+    sys.exit("The font you have selected is not available")

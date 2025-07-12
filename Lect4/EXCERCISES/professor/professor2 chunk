@@ -1,0 +1,31 @@
+import random
+
+games = 0
+while games < 10:
+    games += 1
+    points = 0
+    x = random.randint(0, 20)
+    y = random.randint(0, 20)
+    tries = 0
+    while True:
+        answer = x + y
+        if tries == 3:
+            print(f"{x} + {y} = {answer}")
+            break
+        else:
+            try:
+                useranswer = int(input(f"{x} + {y} = "))
+                if useranswer == answer:
+                    points += 1
+                    print("YOU GOT A POINT")
+                    break
+                else:
+                    tries +=1
+                    print("EEE")
+                    pass
+            except (ValueError, TypeError):
+                print("EEE")
+                pass
+
+
+print(f"You won {points}/{games} games!")
