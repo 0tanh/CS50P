@@ -1,0 +1,38 @@
+import random 
+import statistics
+import sys
+
+
+
+wood_colours = ["teak", "oak", "pine", "ebony", "meranti", "cherry", "imbua"]
+print("dese are all da coffin woods: teak, oak, pine, ebony, meranti, cherry & imbua")
+while True:
+    guess = input("what do you think is the best wood baws??? ")
+    if guess in wood_colours:
+        break
+    else:
+        print("das not a wood baws")
+        continue
+
+howmany = input("how many pulls are we doing baws??? ")
+if len(howmany) > 9:
+    sys.exit("THATS TOO DAMN MANY KILLS MYSELF")
+elif 5 < len(howmany) < 9:
+    print("That's gettin up there baws but we'll ask")
+    usersize = int(howmany)
+else:
+    print("phew")
+    usersize = int(howmany)
+
+survey_says = statistics.mode(
+    random.choices(
+        wood_colours, 
+        weights= [14, 15, 15, 14, 14, 14, 14], 
+        k=usersize))
+print(f"{survey_says} was da most common answer")
+
+if guess == survey_says:
+    print("Thats why ur da baws!!")
+
+if guess != survey_says:
+    print("Im getting suspicious of ur claims to power.....")
