@@ -1,8 +1,8 @@
-namelist = []
+import csv
 
-with open("names2.txt") as file:
+with open("gigs.csv") as file:
     for line in file:
-        namelist.append(line.rstrip())
-        
-for name in sorted(namelist):
-    print(f"hello, {name}")
+        Venue, person, associated = line.rstrip().split(",")
+        # row = row [1:]
+        print(f"{Venue} is associated with {person} who I know from {associated}")
+    
