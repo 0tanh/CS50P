@@ -3,11 +3,15 @@ import csv
 gigs = []
 
 with open("gigs.csv") as file:
-    for line in file:
-        Venue, Person, Associated = line.rstrip().split(",")
-        gig = {"Venue": Venue, "Person": Person, "Associated": Associated }
-        gigs.append(gig)
+    reader = csv.DictReader(file)
+    for row in reader:
+        gigs.append(
+            {"Venue": row["Venue"], 
+             "Person":row ["Person"], 
+             "Associated": row["Associated"]
+             })
 
-for gig in gigs:
+for gig in sorted(
+    gigs, key=lambda gig: gig["Associated"]):
     print(f"{gig['Venue']} is associated with {gig['Person']} who I know from {gig['Associated']}")
     
