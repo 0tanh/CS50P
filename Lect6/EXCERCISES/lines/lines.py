@@ -1,29 +1,27 @@
 import sys
 
 def main(): 
-    print(lines())
+    lines()
 
-def lines():
+def lines(dflt="tester.py"):
     try:
         if len(sys.argv) >= 3:
             sys.exit("Too many command-line arguments")
         elif len(sys.argv) == 1:
             sys.exit("Too few command-line arguments")
         extension_test = sys.argv[1].split(".")
-        if extension_test[1] != "py":
+        if extension_test[-1] != "py":
             sys.exit("Not a Python File")
-        with open(sys.argv[1], "w") as userfile:
+        with open(sys.argv[1], "r") as userfile:
             content = userfile.readlines()
             LOC = 0
             for line in content:
-                line = line.lstrip
-                if line[0] == "#":
-                    continue
-                else:
+                cleanline = line.lstrip()
+                if cleanline and not cleanline.startswith("#"):
                     LOC += 1
             print(LOC)
     except FileNotFoundError:
         sys.exit("File not found")
-
     
-main()
+if __name__ == "__main__":
+    main()
