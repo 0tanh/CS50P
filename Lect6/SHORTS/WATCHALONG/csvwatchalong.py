@@ -7,15 +7,27 @@ def main():
         "views.csv", "r", encoding='utf-8') as viewWATCH, open(
             "analysis.csv","w", encoding= 'utf-8') as analysis:
         reader = csv.DictReader(viewWATCH)
+        writer = csv.DictWriter(
+            analysis, fieldnames=reader.fieldnames + ["brightness"])
+        writer.writeheader()
+        
         for row in reader:
-            brighness = calculate_brightness(f"{row['id']}.jpeg")
-            print(round(brighness, 2))
+            brightness = calculate_brightness(f"{row['id']}.jpeg")
+            writer.writerow(
+                {
+                    "id": row["id"],
+                    "english_title" : row["english_title"],
+                    "japanese_title" : row["japanese_title"],
+                    "brightness" : round(brightness,2)
+                 }
+            )
 
 
 
 def calculate_brightness(filename):
     with Image.open(filename) as image:
-        brightness = np.mean(np.array(image.convert("L")))/255
+        brightness = np.mean(
+            np.array(image.convert("L")))/255
     return brightness
 
 main()
