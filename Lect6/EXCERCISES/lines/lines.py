@@ -21,7 +21,7 @@ def lines(dflt="tester.py"):
                     LOC += 1
             print(LOC)
     except FileNotFoundError:
-        sys.exit("File not found")
+        sys.exit("File does not exist")
     
 if __name__ == "__main__":
     main()
