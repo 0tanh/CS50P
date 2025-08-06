@@ -3,8 +3,7 @@ import numpy as np
 from PIL import Image
 
 def main():
-    with open(
-        "views.csv", "r", encoding='utf-8') as viewWATCH, open(
+    with open("views.csv", "r", encoding='utf-8') as viewWATCH, open(
             "analysis.csv","w", encoding= 'utf-8') as analysis:
         reader = csv.DictReader(viewWATCH)
         writer = csv.DictWriter(
