@@ -1,7 +1,7 @@
 import sys
 
 def main(): 
-    lines()
+    print(lines())
 
 def lines(dflt="tester.py"):
     try:
@@ -19,7 +19,7 @@ def lines(dflt="tester.py"):
                 cleanline = line.lstrip()
                 if cleanline and not cleanline.startswith("#"):
                     LOC += 1
-            print(LOC)
+            return LOC
     except FileNotFoundError:
         sys.exit("File does not exist")
     
