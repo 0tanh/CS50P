@@ -5,21 +5,29 @@ def main():
     if len(sys.argv) == 1:
         sys.exit("Too Few Command Line Arguments")
     
-    if len(sys.argv) > 4:
+    if len(sys.argv) > 3:
         sys.exit("Too Many Command Line arguments")
     
     try:
         with open(sys.argv[1], "r", encoding='utf-8') as Before, open(
             sys.argv[2] ,"w", encoding= 'utf-8') as After:
+            
             reader = csv.DictReader(Before)
-            writer = csv.DictWriter(After, fieldnames=reader.fieldnames[1] + ["first"] + ["last"])
+            new_fieldnames = ['first','last','house']
+            
+            writer = csv.DictWriter(After, fieldnames=new_fieldnames)
+            writer.writeheader()
+            
             for row in reader:
-                Cleaned_Name = row.split(",")
-                row["first"] = Cleaned_Name[1] 
-                row["last"] = Cleaned_Name[0]
-            writer.writerow(row)
-    
+                new_row = {}
+                Cleaned_Name = row["name"].split(", ")
+                new_row["first"] = Cleaned_Name[1] 
+                new_row["last"] = Cleaned_Name[0]
+                new_row["house"] = row.get('house', ''.strip())
+                writer.writerow(new_row)
+            
     except FileNotFoundError:
         sys.exit(f"Could not read {sys.argv[1]}")
 
-main()
+if __name__ == "__main__":
+    main()
